@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exhibitions - Chamber of Reflection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="page-header">
+        <div class="header-content">
+            <div>
+                <h1 class="site-title">Chamber of Reflection</h1>
+                <p class="subtitle">Art Gallery Management</p>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/artists">Artists</a></li>
+                    <li><a href="/artworks">Artworks</a></li>
+                    <li><a href="/galleries">Galleries</a></li>
+                    <li><a href="/exhibitions">Exhibitions</a></li>
+                    <li><a href="/customers">Customers</a></li>
+                    <li><a href="/contacts">Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container fade-in">
+        <h2 class="page-title">Exhibitions</h2>
+        <p class="page-description">Schedule and coordinate art exhibitions</p>
+
+        <div class="form-section">
+            <h3>Schedule New Exhibition</h3>
+            <form action="/add_exhibition" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="start_date">Start Date *</label>
+                        <input type="date" id="start_date" name="start_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date">End Date *</label>
+                        <input type="date" id="end_date" name="end_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gallery_id">Gallery ID *</label>
+                        <input type="number" id="gallery_id" name="gallery_id" required placeholder="Enter gallery ID" min="1">
+                    </div>
+                </div>
+                <button type="submit" class="btn">Schedule Exhibition</button>
+            </form>
+        </div>
+
+        <div class="table-section">
+            <div class="table-header">
+                <h3>Scheduled Exhibitions</h3>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Exhibition ID</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Gallery</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for e in exhibitions %}
+                        <tr>
+                            <td>{{ e[0] }}</td>
+                            <td>{{ e[1] }}</td>
+                            <td>{{ e[2] }}</td>
+                            <td>{{ e[3] if e[3] else '—' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>
