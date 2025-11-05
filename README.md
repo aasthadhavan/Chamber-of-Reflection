@@ -1,4 +1,4 @@
-The Art Gallery Management System is a complete Database Management System (DBMS) mini-project developed by Aastha Dhavan.
+The Art Gallery Management System is a complete Database Management System (DBMS) mini-project.
 It is designed to help an art gallery store and manage details about artists, artworks, galleries, exhibitions, and customers through a user-friendly web interface.
 The project demonstrates the integration of a Flask-based backend with a MySQL database, and it is ideal for academic submissions or learning database connectivity.
 
